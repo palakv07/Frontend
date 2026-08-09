@@ -21,3 +21,7 @@ Projects Included
 ### To Do App
 ! files : todo.html , todo.css and todo.js
 Deployed at :https://palakv07.github.io/Frontend-Assignments/
+
+### Api Integration
+!files : api.html, api.css, api.js
+api :https://api.nationalize.io?name=nathaniel integrated to display country name and probability on web page
