@@ -1,7 +1,10 @@
 import { useState } from "react"
 import Product from "./Product"
 import ProductCart from "./Productcart"
+import { useTheme } from "./ThemeContext"
+
 function App() {
+    const { theme, toggleTheme } = useTheme()
     const [cartCount, setCartCount] = useState(0)
     const products = [
         {
@@ -50,7 +53,7 @@ function App() {
         setCartCount(cartCount + 1)
     }
     return (
-        <div className="dashboard">
+        <div className={`dashboard ${theme}`}>
 
             <header>
                 <div>
@@ -58,7 +61,12 @@ function App() {
                     <p>Product Management Dashboard</p>
                 </div>
 
-                <ProductCart cartCount={cartCount} />
+                <div className="header-actions">
+                    <button className="theme-toggle" onClick={toggleTheme}>
+                        {theme === "light" ? " Dark" : " Light"}
+                    </button>
+                    <ProductCart cartCount={cartCount} />
+                </div>
             </header>
 
             <main>

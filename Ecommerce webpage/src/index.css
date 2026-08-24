@@ -165,7 +165,7 @@ main {
 }
 
 .product-info button:hover {
-    background: #444;
+    background: #d13c3c;
 }
 
 @media (max-width: 1000px) {
@@ -200,4 +200,77 @@ main {
         align-items: flex-start;
         gap: 15px;
     }
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.theme-toggle {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.theme-toggle:hover {
+    background: #656565;
+}
+
+.dark {
+    background: #1a1a2e;
+    color: #eee;
+}
+
+.dark header {
+    background: #16213e;
+    border-bottom: 1px solid #333;
+}
+
+.dark .products-section {
+    background: #16213e;
+    border: 1px solid #333;
+}
+
+.dark .product-card {
+    background: #1a1a2e;
+    border: 1px solid #333;
+}
+
+.dark .cart {
+    background: #eee;
+    color: #222;
+}
+
+.dark .cart span {
+    background: #222;
+    color: #eee;
+}
+
+.dark .add-product {
+    background: #eee;
+    color: #222;
+}
+
+.dark .product-info button {
+    background: #eee;
+    color: #222;
+}
+
+.dark .product-info button:hover {
+    background: #ccc;
+}
+
+.dark .theme-toggle {
+    background: #eee;
+    color: #222;
+}
+
+.dark .theme-toggle:hover {
+    background: #ccc;
 }
