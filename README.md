@@ -33,4 +33,7 @@ api :https://api.nationalize.io?name=nathaniel integrated to display country nam
 
 ###  Ecommerce ProductCarts
 !folder Ecommerce webpage
+
+###  Counter app
+!folder Counter webpage
 Implementing React components and States to create productCarts and counter function
