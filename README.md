@@ -32,7 +32,6 @@ Deployed : [Todo App](https://palakv07.github.io/Frontend/todo%20app/)
 
 !folder: todo app
 ! files : todo.html , todo.css and todo.js
-Deployed at :https://palakv07.github.io/Frontend-Assignments/
 
 ### Api Integration
 Deployed : [Api Integration](https://palakv07.github.io/Frontend/api%20webpage/)
