@@ -54,16 +54,49 @@ jobs:
         run: npm run build
 
       # -------------------------
-      # Prepare GitHub Pages
+      # Prepare deployment folder
       # -------------------------
 
       - name: Prepare deployment folder
         run: |
-          mkdir -p deploy/Ecommerce\ webpage
-          mkdir -p deploy/Counter\ webpage
+          mkdir -p "deploy/Ecommerce webpage"
+          mkdir -p "deploy/Counter webpage"
 
           cp -r "Ecommerce webpage/dist/." "deploy/Ecommerce webpage/"
           cp -r "Counter webpage/dist/." "deploy/Counter webpage/"
+
+      # -------------------------
+      # Copy HTML/CSS/JS projects
+      # -------------------------
+
+      - name: Copy API webpage
+        run: |
+          mkdir -p "deploy/api webpage"
+          cp -r "api webpage/." "deploy/api webpage/"
+
+      - name: Copy Chess webpage
+        run: |
+          mkdir -p "deploy/chess webpage"
+          cp -r "chess webpage/." "deploy/chess webpage/"
+
+      - name: Copy Memme webpage
+        run: |
+          mkdir -p "deploy/memme webpage"
+          cp -r "memme webpage/." "deploy/memme webpage/"
+
+      - name: Copy Portfolio webpage
+        run: |
+          mkdir -p "deploy/portfolio webpage"
+          cp -r "portfolio webpage/." "deploy/portfolio webpage/"
+
+      - name: Copy Todo app
+        run: |
+          mkdir -p "deploy/todo app"
+          cp -r "todo app/." "deploy/todo app/"
+
+      # -------------------------
+      # GitHub Pages
+      # -------------------------
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
