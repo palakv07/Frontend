@@ -1,0 +1,88 @@
+name: Deploy Frontend Projects
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # -------------------------
+      # Build Ecommerce
+      # -------------------------
+
+      - name: Install Ecommerce dependencies
+        working-directory: Ecommerce webpage
+        run: npm install
+
+      - name: Build Ecommerce
+        working-directory: Ecommerce webpage
+        run: npm run build
+
+      # -------------------------
+      # Build Counter
+      # -------------------------
+
+      - name: Install Counter dependencies
+        working-directory: Counter webpage
+        run: npm install
+
+      - name: Build Counter
+        working-directory: Counter webpage
+        run: npm run build
+
+      # -------------------------
+      # Prepare GitHub Pages
+      # -------------------------
+
+      - name: Prepare deployment folder
+        run: |
+          mkdir -p deploy/Ecommerce\ webpage
+          mkdir -p deploy/Counter\ webpage
+
+          cp -r "Ecommerce webpage/dist/." "deploy/Ecommerce webpage/"
+          cp -r "Counter webpage/dist/." "deploy/Counter webpage/"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./deploy
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
